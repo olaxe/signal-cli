@@ -2,7 +2,7 @@ FROM openjdk:11-jre-slim-buster
 MAINTAINER olaxe
 
 RUN apt update && apt -y upgrade \
-    && apt -y install curl \
+    && apt -y install curl wget \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
