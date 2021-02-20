@@ -4,7 +4,7 @@ MAINTAINER olaxe
 RUN apt update && apt -y upgrade \
     && apt -y install curl wget \
     && apt -y autoremove \
-    && apt -y clean
+    && apt -y clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
