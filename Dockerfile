@@ -20,8 +20,6 @@ RUN curl --silent "https://api.github.com/repos/AsamK/signal-cli/releases/latest
 # Try to run it so we know it works
 RUN /app/bin/signal-cli -v
 
-ADD /app/bin/signal-cli /usr/local/bin
-
 WORKDIR /config
 
 CMD ["sleep", "infinity"]
