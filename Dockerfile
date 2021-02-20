@@ -1,7 +1,7 @@
 FROM openjdk:11-jre-slim-buster
 MAINTAINER olaxe
 
-RUN apt --no-cache update && apt --no-cache upgrade \
+RUN apt update && apt -y upgrade \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
