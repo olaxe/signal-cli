@@ -3,10 +3,10 @@ MAINTAINER olaxe
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && apt -y upgrade \
-    && apt -y install curl wget \
-    && apt -y autoremove \
-    && apt -y clean \
+RUN apt-get update && apt-get -y upgrade \
+    && apt-get -y install curl wget \
+    && apt-get -y autoremove \
+    && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
