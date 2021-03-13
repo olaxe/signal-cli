@@ -1,4 +1,5 @@
 # signal-cli
+[![GitHub Super-Linter](https://github.com/olaxe/signal-cli/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 Make the latest version of signal-cli available in a container
 
