@@ -3,7 +3,7 @@ FROM openjdk:11-jre-slim-buster
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-    && apt-get -y install --no-install-recommends wget=1 \
+    && apt-get -y install --no-install-recommends wget \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
