@@ -1,17 +1,16 @@
 FROM openjdk:11-jre-slim-buster
-MAINTAINER olaxe
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get -y upgrade \
-    && apt-get -y install curl wget \
+RUN apt-get update \
+    && apt-get -y install wget \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-RUN curl --silent "https://api.github.com/repos/AsamK/signal-cli/releases/latest" \
+RUN wget -qO- "https://api.github.com/repos/AsamK/signal-cli/releases/latest" \
     | grep browser_download_url \
     | grep tar.gz\" \
     | cut -d '"' -f 4 \
