@@ -1,7 +1,8 @@
 FROM openjdk:11-jre-slim-buster
 MAINTAINER olaxe
 
-RUN apt update && apt -y install apt-utils \ #Not installed by default in arm64
+# apt-utils not available in arm64
+RUN apt update && apt -y install apt-utils \ 
     && apt -y upgrade \
     && apt -y install curl wget \
     && apt -y autoremove \
