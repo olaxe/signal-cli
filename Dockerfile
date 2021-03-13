@@ -1,8 +1,10 @@
 FROM openjdk:11-jre-slim-buster
 MAINTAINER olaxe
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 # apt-utils not available in arm64
-RUN apt update && apt -y install apt-utils \ 
+RUN apt update && apt -y --no-install-recommends install apt-utils \ 
     && apt -y upgrade \
     && apt -y install curl wget \
     && apt -y autoremove \
