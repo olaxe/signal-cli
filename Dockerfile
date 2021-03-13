@@ -10,7 +10,9 @@ RUN apt-get update \
 
 WORKDIR /app
 
-RUN set -xo pipefail && wget -qO- "https://api.github.com/repos/AsamK/signal-cli/releases/latest" \
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN wget -qO- "https://api.github.com/repos/AsamK/signal-cli/releases/latest" \
     | grep browser_download_url \
     | grep tar.gz\" \
     | cut -d '"' -f 4 \
