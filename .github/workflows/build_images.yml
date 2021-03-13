@@ -1,15 +1,27 @@
-name: "Build Images on Push"
+name: "Build Images"
 
 on:
   push:
     branches: master
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
   build:
+    name: Lint Code Base & Build Images
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v2
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+      - name: Lint Code Base
+        uses: github/super-linter@v3
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # https://github.com/docker/setup-qemu-action
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
