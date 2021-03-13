@@ -3,14 +3,14 @@ FROM openjdk:11-jre-slim-buster
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-    && apt-get -y install wget \
+    && apt-get install --no-install-recommends wget=1 \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-RUN wget -qO- "https://api.github.com/repos/AsamK/signal-cli/releases/latest" \
+RUN set -o pipefail && wget -qO- "https://api.github.com/repos/AsamK/signal-cli/releases/latest" \
     | grep browser_download_url \
     | grep tar.gz\" \
     | cut -d '"' -f 4 \
