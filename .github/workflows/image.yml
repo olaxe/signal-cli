@@ -18,5 +18,5 @@ jobs:
       - name: build the image
       run: |
         docker buildx build \
-          --tag olaxe/multiarch-example:latest \
+          --tag olaxe/signal-cli:latest \
           --platform linux/amd64,linux/arm/v7,linux/arm64 .
